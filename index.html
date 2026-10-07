@@ -995,7 +995,7 @@
 
     let userPaused = false; // user ne khud pause kiya to auto-start na ho
 
-    const startEvents = ["click", "touchend", "keydown", "wheel", "scroll"];
+    const startEvents = ["pointerdown", "mousedown", "click", "touchend", "keydown", "wheel", "scroll"];
 
     function removeAutoStart() {
       startEvents.forEach(ev => document.removeEventListener(ev, autoStart));
