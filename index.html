@@ -403,45 +403,69 @@
       line-height: 1.7
     }
 
-    /* Venue */
+    /* Venues */
     .venue-grid {
-      max-width: 1050px;
+      max-width: 1100px;
       margin: auto;
       display: grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap: 35px;
-      align-items: center;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 25px;
+    }
+
+    .venue-card {
+      background: #fffaf3;
+      border: 1px solid var(--line);
+      padding: 18px;
+      text-align: center;
+      transition: .35s;
+      box-shadow: 0 10px 30px rgba(70, 30, 20, .06);
+    }
+
+    .venue-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 18px 40px rgba(80, 35, 25, .12);
     }
 
     .venue-img {
-      border: 7px solid white;
-      box-shadow: 0 18px 45px rgba(60, 30, 20, .13);
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      margin-bottom: 18px;
     }
 
-    .venue-copy {
-      text-align: center
-    }
-
-    .venue-copy h3 {
+    .venue-card h3 {
       font-family: "Great Vibes", cursive;
       color: var(--maroon);
-      font-size: 55px;
+      font-size: 42px;
+      margin-bottom: 8px;
     }
 
-    .venue-copy p {
+    .venue-event {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 24px;
+      color: var(--maroon2);
+      margin-bottom: 10px;
+    }
+
+    .venue-card p {
       color: var(--muted);
-      line-height: 1.9;
-      font-size: 13px
+      line-height: 1.8;
+      font-size: 13px;
     }
 
     .map {
       display: inline-block;
-      margin-top: 22px;
-      padding: 12px 25px;
+      margin-top: 18px;
+      padding: 11px 22px;
       background: var(--maroon);
       color: white;
       border-radius: 25px;
       font-size: 11px;
+      transition: .3s;
+    }
+
+    .map:hover {
+      background: var(--maroon2);
     }
 
     /* Gallery */
@@ -658,10 +682,10 @@
   <header class="hero">
     <div class="hero-card reveal">
       <div class="ganesh">❉</div>
-      <div id="parmatmaek">॥ परमात्मा एक ॥॥</div>
+      <div id="parmatmaek">॥ परमात्मा एक ॥</div>
       <div class="eyebrow" style="margin-top:25px">Together with their families</div>
       <div class="script" style="margin-top:12px">Wedding Invitation</div>
-      <h1>Vipin <span class="and">&</span>&nbsp;Shrutika</h1>
+      <h1>Shrutika <span class="and">&</span>&nbsp;Vipin</h1>
       <div class="hero-date">25 • NOVEMBER • 2026</div>
       <a class="hero-btn" href="#story">You're Invited →</a>
     </div>
@@ -725,7 +749,7 @@
             alt="Mehendi">
         </div>
         <h3>Mehendi</h3>
-        <div class="date">21 NOVEMBER 2026 • 06:00 PM</div>
+        <div class="date">22 NOVEMBER 2026 • 07:00 PM</div>
         <p>An evening of music, mehendi, dance and celebrations.</p>
       </article>
 
@@ -761,26 +785,93 @@
     </div>
   </section>
 
-  <!-- Venue -->
+  <!-- Venues -->
   <section class="section alt" id="venue">
     <div class="section-title reveal">
       <div class="script">Where We Celebrate</div>
-      <h2>THE WEDDING VENUE</h2>
+      <h2>OUR CELEBRATION VENUES</h2>
       <div class="ornament">— ✦ —</div>
     </div>
 
-    <div class="venue-grid reveal">
-      <img class="venue-img"
-        src="https://t4.ftcdn.net/jpg/09/28/25/55/240_F_928255582_sChbWnp6rEFl4LzX8bmfgJbzk5dy5GQ3.jpg"
-        alt="Wedding venue">
-      <div class="venue-copy">
-        <h3>Mahatma Phule Sabhagruha</h3>
+    <div class="venue-grid">
+
+      <!-- Mehendi Venue -->
+      <div class="venue-card reveal">
+        <img class="venue-img"
+          src="https://t3.ftcdn.net/jpg/20/26/89/82/240_F_2026898299_PqOUl7q8AHxXDkkO3gVippsczecoEhrf.jpg"
+          alt="Mehendi Venue">
+
+        <div class="venue-event">Mehendi</div>
+        <h3>Our Home</h3>
+
         <p>
-          Reshimbagh Rd, Reshim Bagh,
-          Nagpur, Maharashtra 440024.
+          Plot no 5, Matoshri Nagar, Wanadongri,<br>
+          Nagpur, Maharashtra 440001
         </p>
-        <a class="map" href="https://maps.app.goo.gl/Pn2siirTyy6PWFyi9" target="_blank">📍 View Location on Maps</a>
+
+        <a class="map" href="https://maps.app.goo.gl/dor7JsJyagAZsA3P9" target="_blank">
+          📍 View Location on Maps
+        </a>
       </div>
+
+      <!-- Haldi Venue -->
+      <div class="venue-card reveal">
+        <img class="venue-img"
+          src="https://t4.ftcdn.net/jpg/16/13/52/85/240_F_1613528581_HduUT00UGyqcfDC4AQOuwIABbmYXDX76.jpg"
+          alt="Haldi Venue">
+
+        <div class="venue-event">Haldi Ceremony</div>
+        <h3>Our Home</h3>
+
+        <p>
+          Plot no 5, Matoshri Nagar, Wanadongri,<br>
+          Nagpur, Maharashtra 440001
+        </p>
+
+        <a class="map" href="https://maps.app.goo.gl/dor7JsJyagAZsA3P9" target="_blank">
+          📍 View Location on Maps
+        </a>
+      </div>
+
+      <!-- Wedding Venue -->
+      <div class="venue-card reveal">
+        <img class="venue-img"
+          src="https://t4.ftcdn.net/jpg/09/28/25/55/240_F_928255582_sChbWnp6rEFl4LzX8bmfgJbzk5dy5GQ3.jpg"
+          alt="Wedding Venue">
+
+        <div class="venue-event">Wedding Ceremony</div>
+        <h3>Mahatma Phule Sabhagruha</h3>
+
+        <p>
+          Reshimbagh Rd, Reshim Bagh,<br>
+          Nagpur, Maharashtra 440024
+        </p>
+
+        <a class="map" href="https://maps.app.goo.gl/Pn2siirTyy6PWFyi9" target="_blank">
+          📍 View Location on Maps
+        </a>
+      </div>
+
+      <!-- Reception Venue -->
+      <div class="venue-card reveal">
+        <img class="venue-img"
+          src="https://t3.ftcdn.net/jpg/20/92/95/68/240_F_2092956874_x0zR5VLrjONGO6khk56D86n6fLzWYDnP.jpg"
+          alt="Reception Venue">
+
+        <div class="venue-event">Reception</div>
+        <h3>Jai Maa Bhawani Celebrations Lawn</h3>
+
+        <p>
+          K.no.70 Panjari Farm Wardha Road,<br>
+          Near Le Meridien Hotel,<br>
+          Nagpur, Maharashtra 441108
+        </p>
+
+        <a class="map" href="https://maps.app.goo.gl/gtGaCd7N8JjqHKzW9" target="_blank">
+          📍 View Location on Maps
+        </a>
+      </div>
+
     </div>
   </section>
 
@@ -808,16 +899,15 @@
   <section class="section alt">
     <div class="section-title reveal">
       <div class="script">With Love and Blessings</div>
-      <h2>OUR FAMILIES</h2>
+      <h2>FAMILY BLESSING</h2>
       <div class="ornament">— ✦ —</div>
     </div>
 
     <div class="family reveal">
       <p>
-        Together with the blessings of<br>
-        <strong>Mr. & Mrs. Dehanakar</strong><br>
-        and<br>
-        <strong>Mr. & Mrs. Charde</strong>
+        With the love and blessings of<br>
+        <strong>Mr. & Mrs. Charde</strong><br>
+        and the love of our entire family.
       </p>
     </div>
   </section>
@@ -845,7 +935,7 @@
   <!-- Footer -->
   <footer class="footer">
     <div class="reveal">
-      <div class="script">Vipin & Shrutika</div>
+      <div class="script">Shrutika & Vipin</div>
       <p>WITH LOVE, LAUGHTER & HAPPILY EVER AFTER ❤️</p>
       <p>25 NOVEMBER 2026</p>
     </div>
