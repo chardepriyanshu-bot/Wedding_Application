@@ -991,17 +991,47 @@
     /* Music */
     const music = document.getElementById("music");
     const musicBtn = document.getElementById("musicBtn");
-    let playing = false;
+    music.volume = 0.5;
 
+    let userPaused = false; // user ne khud pause kiya to auto-start na ho
+
+    const startEvents = ["click", "touchend", "keydown", "wheel", "scroll"];
+
+    function removeAutoStart() {
+      startEvents.forEach(ev => document.removeEventListener(ev, autoStart));
+    }
+
+    function autoStart(e) {
+      if (userPaused) return;
+      // Music button apna kaam khud karta hai
+      if (e.target.closest && e.target.closest("#musicBtn")) return;
+      music.play().catch(() => { /* blocked, agle event par phir try */ });
+    }
+
+    // 1) Page load par try karo (kuch browsers allow karte hain)
+    music.play().catch(() => { });
+
+    // 2) Warna pehle click / tap / key / scroll par shuru
+    startEvents.forEach(ev => document.addEventListener(ev, autoStart, { passive: true }));
+
+    // Button aur listeners ko actual playback se sync rakho
+    music.addEventListener("playing", () => {
+      musicBtn.textContent = "Ⅱ";
+      removeAutoStart();
+    });
+    music.addEventListener("pause", () => {
+      musicBtn.textContent = "♪";
+    });
+
+    // Music button: play / pause toggle
     musicBtn.addEventListener("click", () => {
-      if (playing) {
-        music.pause();
-        musicBtn.textContent = "♪";
-      } else {
+      if (music.paused) {
+        userPaused = false;
         music.play().catch(() => { });
-        musicBtn.textContent = "Ⅱ";
+      } else {
+        userPaused = true;
+        music.pause();
       }
-      playing = !playing;
     });
 
 
