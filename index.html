@@ -901,36 +901,29 @@
     document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
 
     /* Music */
-    /* Music */
     const music = document.getElementById("music");
     const musicBtn = document.getElementById("musicBtn");
-
     let playing = false;
 
-    // Start music automatically when page loads
-    window.addEventListener("load", () => {
-      music.play()
-        .then(() => {
-          playing = true;
-          musicBtn.textContent = "Ⅱ";
-        })
-        .catch(() => {
-          console.log("Autoplay blocked by browser. Click the music button.");
-        });
-    });
-
-    // Music button
     musicBtn.addEventListener("click", () => {
-      if (music.paused) {
-        music.play();
-        musicBtn.textContent = "Ⅱ";
-        playing = true;
-      } else {
+      if (playing) {
         music.pause();
         musicBtn.textContent = "♪";
-        playing = false;
+      } else {
+        music.play().catch(() => { });
+        musicBtn.textContent = "Ⅱ";
       }
+      playing = !playing;
     });
+
+    // Start music on first click anywhere on the page
+    document.addEventListener("click", () => {
+      if (music.paused) {
+        music.play().catch(() => { });
+        musicBtn.textContent = "Ⅱ";
+        playing = true;
+      }
+    }, { once: true });
 
     /* RSVP */
     document.getElementById("rsvpForm").addEventListener("submit", e => {
