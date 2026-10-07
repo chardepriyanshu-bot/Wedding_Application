@@ -725,7 +725,7 @@
             alt="Mehendi">
         </div>
         <h3>Mehendi</h3>
-        <div class="date">21 DECEMBER 2026 • 06:00 PM</div>
+        <div class="date">21 NOVEMBER 2026 • 06:00 PM</div>
         <p>An evening of music, mehendi, dance and celebrations.</p>
       </article>
 
@@ -849,7 +849,7 @@
     <div class="reveal">
       <div class="script">Vipin & Shrutika</div>
       <p>WITH LOVE, LAUGHTER & HAPPILY EVER AFTER ❤️</p>
-      <p>20 DECEMBER 2026</p>
+      <p>25 NOVEMBER 2026</p>
     </div>
   </footer>
 
@@ -901,19 +901,35 @@
     document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
 
     /* Music */
+    /* Music */
     const music = document.getElementById("music");
     const musicBtn = document.getElementById("musicBtn");
+
     let playing = false;
 
+    // Start music automatically when page loads
+    window.addEventListener("load", () => {
+      music.play()
+        .then(() => {
+          playing = true;
+          musicBtn.textContent = "Ⅱ";
+        })
+        .catch(() => {
+          console.log("Autoplay blocked by browser. Click the music button.");
+        });
+    });
+
+    // Music button
     musicBtn.addEventListener("click", () => {
-      if (playing) {
+      if (music.paused) {
+        music.play();
+        musicBtn.textContent = "Ⅱ";
+        playing = true;
+      } else {
         music.pause();
         musicBtn.textContent = "♪";
-      } else {
-        music.play().catch(() => { });
-        musicBtn.textContent = "Ⅱ";
+        playing = false;
       }
-      playing = !playing;
     });
 
     /* RSVP */
